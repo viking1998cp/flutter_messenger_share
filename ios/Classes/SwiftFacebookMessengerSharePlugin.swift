@@ -37,30 +37,30 @@ public class SwiftFacebookMessengerSharePlugin: NSObject, FlutterPlugin {
             
             share(content, result)
         } else if method == "shareImages", let paths = call.arguments as? [String] {
-            let photos = paths.map ({ UIImage(contentsOfFile: $0) }).compactMap({$0}).map({SharePhoto(image: $0, userGenerated: true)})
-            let content = SharePhotoContent()
-            content.photos = photos
+//             let photos = paths.map ({ UIImage(contentsOfFile: $0) }).compactMap({$0}).map({SharePhoto(image: $0, userGenerated: true)})
+//             let content = SharePhotoContent()
+//             content.photos = photos
             
-            share(content, result)
+//             share(content, result)
         } else if method == "shareDataImage" {
-            guard let flutterData = call.arguments as? FlutterStandardTypedData, let image = UIImage(data: flutterData.data) else {
-                result(failedWithMessage("Image data couldn't parsed"))
-                return
-            }
-            let content = SharePhotoContent()
-            content.photos = [SharePhoto(image: image, userGenerated: true)]
+//             guard let flutterData = call.arguments as? FlutterStandardTypedData, let image = UIImage(data: flutterData.data) else {
+//                 result(failedWithMessage("Image data couldn't parsed"))
+//                 return
+//             }
+//             let content = SharePhotoContent()
+//             content.photos = [SharePhoto(image: image, userGenerated: true)]
 
-            share(content, result)
+//             share(content, result)
             
         } else if method == "shareVideo" {
-            guard let flutterData = call.arguments as? FlutterStandardTypedData else {
-                result(failedWithMessage("Video data couldn't parsed"))
-                return
-            }
-            let content = ShareVideoContent()
-            content.video = ShareVideo(data: flutterData.data)
+//             guard let flutterData = call.arguments as? FlutterStandardTypedData else {
+//                 result(failedWithMessage("Video data couldn't parsed"))
+//                 return
+//             }
+//             let content = ShareVideoContent()
+//             content.video = ShareVideo(data: flutterData.data)
 
-            share(content, result)
+//             share(content, result)
         } else {
             result(failedWithMessage("Function is not implemented with iOS platform"))
         }

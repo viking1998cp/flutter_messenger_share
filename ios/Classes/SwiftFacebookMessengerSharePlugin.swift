@@ -28,14 +28,21 @@ public class SwiftFacebookMessengerSharePlugin: NSObject, FlutterPlugin {
         
         if method == "shareUrl", let urlString = call.arguments as? String {
             guard let url = URL(string: urlString) else {
-                result(failedWithMessage("Invalid URL"))
-                return
+                preconditionFailure("URL is invalid")
             }
-            
+
             let content = ShareLinkContent()
             content.contentURL = url
-            
-            share(content, result)
+
+            let dialog = MessageDialog(content: content, delegate: self)
+
+            do {
+                try dialog.validate()
+            } catch {
+                print(error)
+            }
+
+            dialog.show()
         } else if method == "shareImages", let paths = call.arguments as? [String] {
 //             let photos = paths.map ({ UIImage(contentsOfFile: $0) }).compactMap({$0}).map({SharePhoto(image: $0, userGenerated: true)})
 //             let content = SharePhotoContent()

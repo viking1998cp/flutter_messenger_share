@@ -50,7 +50,7 @@ public class SwiftFacebookMessengerSharePlugin: NSObject, FlutterPlugin {
 
                      // Create URL
                    
-                     var imageUi = UIImage(contentsOfFile: listImage?[i] )
+                     var imageUi = UIImage(contentsOfFile: paths?[i] )
 
                      
 

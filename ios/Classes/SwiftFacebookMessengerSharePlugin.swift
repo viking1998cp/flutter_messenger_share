@@ -50,14 +50,14 @@ public class SwiftFacebookMessengerSharePlugin: NSObject, FlutterPlugin {
             
             share(content, result)
         } else if method == "shareDataImage" {
-            guard let flutterData = call.arguments as? FlutterStandardTypedData, let image = UIImage(data: flutterData.data) else {
-                result(failedWithMessage("Image data couldn't parsed"))
-                return
-            }
-            let content = SharePhotoContent()
-            content.photos = [SharePhoto(image: image, userGenerated: true)]
+            // guard let flutterData = call.arguments as? FlutterStandardTypedData, let image = UIImage(data: flutterData.data) else {
+            //     result(failedWithMessage("Image data couldn't parsed"))
+            //     return
+            // }
+            // let content = SharePhotoContent()
+            // content.photos = [SharePhoto(image: image, userGenerated: true)]
 
-            share(content, result)
+            // share(content, result)
             
         } else if method == "shareVideo" {
             guard let flutterData = call.arguments as? FlutterStandardTypedData else {

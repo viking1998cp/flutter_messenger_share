@@ -44,9 +44,25 @@ public class SwiftFacebookMessengerSharePlugin: NSObject, FlutterPlugin {
 
             dialog.show()
         } else if method == "shareImages", let paths = call.arguments as? [String] {
-            let photos = paths.map ({ UIImage(contentsOfFile: $0) }).compactMap({$0}).map({SharePhoto(image: $0, userGenerated: true)})
+              for i in 0...4  {
+
+                     // Create URL
+                   
+                     var imageUi = UIImage(contentsOfFile: listImage?[i] )
+
+                     
+
+                     // statements
+                     let photo = SharePhoto(
+                       image: imageUi,
+                       isUserGenerated: true
+                     )
+                     sharePhotoList.append(photo)
+
+            }
+           
             let content = SharePhotoContent()
-            content.photos = photos
+            content.photos = sharePhotoList
             
             share(content, result)
         } else if method == "shareDataImage" {

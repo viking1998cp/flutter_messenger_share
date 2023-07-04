@@ -27,6 +27,7 @@ public class SwiftFacebookMessengerSharePlugin: NSObject, FlutterPlugin {
         let method = call.method
         
         if method == "shareUrl", let urlString = call.arguments as? String {
+            let sharePhotoList : Array<SharePhoto>
             guard let url = URL(string: urlString) else {
                 preconditionFailure("URL is invalid")
             }
